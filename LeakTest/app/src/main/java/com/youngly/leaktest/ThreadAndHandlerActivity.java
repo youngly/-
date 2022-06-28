@@ -3,6 +3,8 @@ package com.youngly.leaktest;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -35,6 +37,8 @@ public class ThreadAndHandlerActivity extends AppCompatActivity {
             public void run() {
                 try {
                     handler.sendEmptyMessage(0);
+                    // 制造oom
+//                    Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.img);
                     Thread.sleep(20_000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
